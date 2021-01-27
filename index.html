@@ -25,11 +25,15 @@
 
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input type="text" class="form-control text-center" value="1">
-                           <button class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button id="buttonDecrease" class="btn btn-default">
+                              <i class="fas fa-minus"></i>
+                           </button>
+                           <input id="inputCount" type="text" class="form-control text-center" value="1">
+                           <button id="buttonIncrease" class="btn btn-default">
+                              <i class="fas fa-plus"></i>
+                           </button>
                         </div>
-                        <h5>$1219</h5>
+                        <h5 id="priceCount">$100</h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -77,6 +81,50 @@
          </div>
       </div>
    </section>
+   <script>
+      document.getElementById("buttonIncrease").addEventListener('click', function () {
+         handleProductQuantity(true);
+      });
+      document.getElementById("buttonDecrease").addEventListener('click', function () {
+         handleProductQuantity(false);
+      });
+
+      function handleProductQuantity(isIncrease) {
+         const inputButtonCounter = document.getElementById("inputCount");
+         const inputCount = parseInt(inputButtonCounter.value);
+         let inputNewCount = inputCount;
+         if (isIncrease == true) {
+            inputNewCount = inputCount + 1;
+         }
+         if (isIncrease == false && inputCount > 0) {
+            inputNewCount = inputCount - 1;
+         }
+
+         inputButtonCounter.value = inputNewCount;
+         const priceCount = inputNewCount * 100;
+         document.getElementById("priceCount").innerText = '$' + priceCount;
+      }
+
+
+      // document.getElementById("buttonIncrease").addEventListener('click', function () {
+      //    const inputButtonCounter = document.getElementById("inputCount");
+      //    const inputCount = parseInt(inputButtonCounter.value);
+      //    const inputNewCount = inputCount + 1;
+      //    inputButtonCounter.value = inputNewCount;
+      //    const priceCount = inputNewCount * 100;
+      //    document.getElementById("priceCount").innerText = '$' + priceCount;
+      // });
+      // document.getElementById("buttonDecrease").addEventListener('click', function () {
+      //    const inputButtonCounter = document.getElementById("inputCount")
+      //    const inputCount = parseInt(inputButtonCounter.value);
+      //    const inputNewCount = inputCount - 1;
+      //    inputButtonCounter.value = inputNewCount;
+      //    const priceCount = inputNewCount * 100;
+      //    document.getElementById("priceCount").innerText = '$' + priceCount;
+      // });
+
+
+   </script>
 </body>
 
 </html>
