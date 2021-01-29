@@ -104,11 +104,13 @@
          document.getElementById(product + "-price").innerText = '$' + productTotal;
       }
       function calculateTotal() {
-         const phoneInput = document.getElementById('phone-count');
-         const phoneCount = parseInt(phoneInput.value);
+         // const phoneInput = document.getElementById('phone-count');
+         // const phoneCount = parseInt(phoneInput.value);
 
-         const caseInput = document.getElementById('case-count');
-         const caseCount = parseInt(caseInput.value);
+         // const caseInput = document.getElementById('case-count');
+         // const caseCount = parseInt(caseInput.value);
+         const phoneCount =getInputValue('phone');
+         const caseCount = getInputValue('case');
 
          const totalPrice = phoneCount * 1219 + caseCount * 59;
          document.getElementById('total-price').innerText = '$' + totalPrice;
@@ -118,7 +120,6 @@
 
          const grandTotal = totalPrice + tax;
          document.getElementById('grand-total').innerText = '$' + grandTotal;
-
       }
       function getInputValue(product) {
          console.log(product);
